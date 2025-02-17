@@ -1,9 +1,9 @@
 import openpyxl as xl
 from openpyxl.chart import Reference, BarChart
 
-def process_workbook(filename):
+def process_workbook('transactions.xlsx'): 
 
-    wb = xl.load_workbook(filename)
+    wb = xl.load_workbook('transactions.xlsx')
     sheet = wb['Sheet1']
     corrected_price_cell_name = sheet['d1']
     corrected_price_cell_name.value = 'corrected price'
@@ -11,8 +11,8 @@ def process_workbook(filename):
     chart_cell_name.value = 'chart'
 
     for row in range(2, sheet.max_row + 1):
-        cell = sheet.cell(row, 3) #this will give the price column
-        corrected_price = cell.value * 0.9
+        price = sheet.cell(row, 3) #this will give the price column
+        corrected_price = price.value * 0.9
         corrected_price_cell = sheet.cell(row, 4)
         corrected_price_cell.value = corrected_price
 
